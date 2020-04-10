@@ -1,25 +1,17 @@
 import React, { Component, Fragment } from "react";
-import { TextField, Select, MenuItem, FormControl } from "@material-ui/core";
+import { TextField, Select, MenuItem, Checkbox, FormControlLabel } from "@material-ui/core";
 import { formData } from "../../data";
+import './Form.css'
+
 
 class Form extends Component {
   render() {
     return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "flex-start",
-          alignItems: "flex-start",
-          flexDirection: "column",
-          width: "80%",
-          height: "100vh",
-          padding: 20,
-        }}
-      >
-        {formData[this.props.currentScreen].fields.map((item) => (
-          <Fragment>
+      <div className="form-wrapper">
+        {formData[this.props.currentScreen].fields.map((item, index) => (
+          <Fragment key={index}>
             {(item.type === "text" || item.type === "number") && (
-              <div style={{ marginTop: "30px" }}>
+              <div className="field-container">
                 <label>{item.label}</label>
                 <br />
                 <TextField
@@ -29,6 +21,7 @@ class Form extends Component {
                     })
                   }
                   {...item}
+                  style={{width: '100%'}}
                   label=""
                   id="outlined-basic"
                   variant="outlined"
@@ -37,12 +30,18 @@ class Form extends Component {
             )}
 
             {item.type === "dropdown" && (
-              <div style={{ marginTop: "30px" }}>
+              <div className="field-container">
                 <label>{item.label}</label>
                 <br />
-                <Select {...item}>
-                  {item.options.map((optionItem) => (
-                    <MenuItem value={optionItem}>{optionItem}</MenuItem>
+                <Select {...item} style={{width: '30%'}}
+                 onChange={(event) =>
+                    this.props.setScreenData(this.props.currentScreen, {
+                      [event.target.name]: event.target.value,
+                    })
+                  }
+                >
+                  {item.options.map((optionItem, index) => (
+                    <MenuItem key={index} value={optionItem}>{optionItem}</MenuItem>
                   ))}
                 </Select>
               </div>
@@ -55,39 +54,56 @@ class Form extends Component {
                 {Object.keys(item.dropdowns).map((nestedDropdown) => (
                   <Fragment>
                     <Select
-                      defaultValue={item.dropdowns[nestedDropdown].options[0]}
-                    >
+                      defaultValue={item.dropdowns[nestedDropdown].options[0]}>
                       {item.dropdowns[nestedDropdown].options.map(
                         (optionItem) => (
                           <MenuItem value={optionItem}>{optionItem}</MenuItem>
                         )
                       )}
                     </Select>
-
-                    {/* <select {...item.dropdowns[nestedDropdown]}>
-                      {item.dropdowns[nestedDropdown].options.map(
-                        (optionItem) => (
-                          <option>{optionItem}</option>
-                        )
-                      )}
-                    </select> */}
                   </Fragment>
                 ))}
               </div>
             )}
 
             {item.type === "textarea" && (
-              <div style={{ marginTop: "30px" }}>
+              <div className="field-container">
                 <label>{item.label}</label>
                 <br />
-
                 <TextField
                   {...item}
                   label=""
                   id="outlined-basic"
                   variant="outlined"
+                  style={{width: '100%'}}
+                  onChange={(event) =>
+                    this.props.setScreenData(this.props.currentScreen, {
+                      [event.target.name]: event.target.value,
+                    })
+                  }
                 />
-                {/* <textarea {...item}></textarea> */}
+              </div>
+            )}
+
+
+            {item.type === "checkbox" && (
+              <div style={{ marginTop: "20px" }}>
+                <br />
+
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      {...item}
+                      color="primary"
+                      onChange={(event) =>
+                       this.props.setScreenData(this.props.currentScreen, {
+                      [event.target.name]: event.target.checked,
+                    })
+                  }
+                    />
+                  }
+                  label={item.label}
+                />
               </div>
             )}
           </Fragment>

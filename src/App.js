@@ -19,12 +19,14 @@ class App extends React.Component {
   render() {
     console.log(this.state.screenData);
     return (
-      <div className="flexer" style={{ width: "100vw" }}>
+      <div className="flexer">
         <Sidebar setScreen={this.setScreen} />
-        <Form
-          currentScreen={this.state.currentScreen}
-          setScreenData={this.setScreenData}
-        />
+        <div className="main-wrapper">
+          <Form
+            currentScreen={this.state.currentScreen}
+            setScreenData={this.setScreenData}
+          />
+        </div>
       </div>
     );
   }

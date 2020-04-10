@@ -3,6 +3,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  overflow-x: hidden;
+}
+
 .flexer {
   display: flex;
   align-items: center;
@@ -18,4 +22,9 @@
 
 .TB {
   border: solid 1px red;
+}
+
+.main-wrapper {
+  overflow-x: hidden;
+  width: 100%;
 }
