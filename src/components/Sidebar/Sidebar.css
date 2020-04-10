@@ -1,0 +1,12 @@
+.sidebar-wrapper {
+    width: 20%;
+    height: 100vh;
+    padding: 20px;
+    background-color: lightgrey;
+    position: 'fixed';
+    left: 0;
+}
+
+.sidebar-wrapper > ul > li {
+    cursor: pointer;
+}

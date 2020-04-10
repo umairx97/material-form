@@ -1,0 +1,14 @@
+.form-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 80%;
+    height: 100vh;
+    padding: 20px;
+}
+
+.field-container {
+    margin-top: 30px;
+     width:70%;
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import './Sidebar.css'
 
 class Sidebar extends React.Component {
   render() {
@@ -21,18 +22,10 @@ class Sidebar extends React.Component {
       },
     ];
     return (
-      <div
-        className="TB"
-        style={{
-          width: "20%",
-          height: "100vh",
-          padding: 20,
-          backgroundColor: "lightgrey",
-        }}
-      >
+      <div className="sidebar-wrapper">
         <ul>
-          {sideBarData.map((item) => (
-            <li onClick={() => this.props.setScreen(item.screenName)} style={{ listStyleType: "none", lineHeight: 3 }}>
+          {sideBarData.map((item, index) => (
+            <li key={index} onClick={() => this.props.setScreen(item.screenName)} style={{ listStyleType: "none", lineHeight: 3 }}>
               {item.displayName}
             </li>
           ))}
