@@ -1,10 +1,5 @@
 import React, { Component, Fragment } from "react";
-import {
-  TextField,
-  Select,
-  MenuItem,
-  FormControl,
-} from "@material-ui/core";
+import { TextField, Select, MenuItem, FormControl } from "@material-ui/core";
 import { formData } from "../../data";
 
 class Form extends Component {
@@ -27,8 +22,17 @@ class Form extends Component {
               <div style={{ marginTop: "30px" }}>
                 <label>{item.label}</label>
                 <br />
-                {delete item.label}
-                <TextField {...item} id="outlined-basic" variant="outlined" />
+                <TextField
+                  onChange={(event) =>
+                    this.props.setScreenData(this.props.currentScreen, {
+                      [event.target.name]: event.target.value,
+                    })
+                  }
+                  {...item}
+                  label=""
+                  id="outlined-basic"
+                  variant="outlined"
+                />
               </div>
             )}
 
@@ -49,7 +53,7 @@ class Form extends Component {
                 <label>{item.label}</label>
                 <br />
                 {Object.keys(item.dropdowns).map((nestedDropdown) => (
-                  <FormControl>
+                  <Fragment>
                     <Select
                       defaultValue={item.dropdowns[nestedDropdown].options[0]}
                     >
@@ -67,7 +71,7 @@ class Form extends Component {
                         )
                       )}
                     </select> */}
-                  </FormControl>
+                  </Fragment>
                 ))}
               </div>
             )}
@@ -76,8 +80,13 @@ class Form extends Component {
               <div style={{ marginTop: "30px" }}>
                 <label>{item.label}</label>
                 <br />
-                {delete item.label}
-                <TextField {...item} id="outlined-basic" variant="outlined" />
+
+                <TextField
+                  {...item}
+                  label=""
+                  id="outlined-basic"
+                  variant="outlined"
+                />
                 {/* <textarea {...item}></textarea> */}
               </div>
             )}

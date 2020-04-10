@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 
-import { InputAdornment } from '@material-ui/core'
+import { InputAdornment } from "@material-ui/core";
 const now = new Date().getUTCFullYear();
 const years = Array(now - (now - 20))
   .fill("")
@@ -11,12 +11,14 @@ export const formData = {
     fields: [
       {
         type: "text",
+        name: "Name",
         label: "Name",
         required: true,
         placeholder: "Enter your name",
       },
       {
         type: "text",
+        name: "Display Name",
         label: "Display Name",
         required: false,
         placeholder: "Enter your Display Name",
@@ -24,6 +26,7 @@ export const formData = {
 
       {
         type: "dropdown",
+        name: "Type",
         options: ["Grant", "Loan", "Relief", "Other"],
         defaultValue: "Grant",
         label: "Type",
@@ -40,6 +43,7 @@ export const formData = {
       },
       {
         type: "text",
+        name: "Provider",
         label: "Provider",
         minLength: 0,
         maxLength: 100,
@@ -59,20 +63,26 @@ export const formData = {
       },
       {
         type: "text",
+        name: "Resource URL",
         label: "Resource URL",
         required: false,
         // placeholder: "https://",
         InputProps: {
-          startAdornment: <InputAdornment position="start">https://</InputAdornment>,
+          startAdornment: (
+            <InputAdornment position="start">https://</InputAdornment>
+          ),
         },
       },
       {
         type: "text",
+        name: "Application URL",
         label: "Application URL",
         required: false,
         // placeholder: "https://",
         InputProps: {
-          startAdornment: <InputAdornment position="start">https://</InputAdornment>,
+          startAdornment: (
+            <InputAdornment position="start">https://</InputAdornment>
+          ),
         },
       },
       {
