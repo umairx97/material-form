@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Sidebar from "./components/Sidebar/Sidebar";
+import Form from "./components/Form/Form";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    currentScreen: "General",
+  };
+
+  setScreen = (screenName) => this.setState({ currentScreen: screenName });
+
+  render() {
+    return (
+      <div className="flexer" style={{ width: "100vw" }}>
+        <Sidebar setScreen={this.setScreen} />
+        <Form currentScreen={this.state.currentScreen}/>
+      </div>
+    );
+  }
 }
 
 export default App;
