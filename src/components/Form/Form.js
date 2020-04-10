@@ -21,7 +21,7 @@ class Form extends Component {
                     })
                   }
                   {...item}
-                  style={{width: '100%'}}
+                  style={{ width: '100%', marginTop:'5px' }}
                   label=""
                   id="outlined-basic"
                   variant="outlined"
@@ -33,8 +33,8 @@ class Form extends Component {
               <div className="field-container">
                 <label>{item.label}</label>
                 <br />
-                <Select {...item} style={{width: '30%'}}
-                 onChange={(event) =>
+                <Select {...item} style={{ width: '30%', marginTop:'5px' }}
+                  onChange={(event) =>
                     this.props.setScreenData(this.props.currentScreen, {
                       [event.target.name]: event.target.value,
                     })
@@ -75,7 +75,7 @@ class Form extends Component {
                   label=""
                   id="outlined-basic"
                   variant="outlined"
-                  style={{width: '100%'}}
+                  style={{ width: '100%', marginTop:'5px' }}
                   onChange={(event) =>
                     this.props.setScreenData(this.props.currentScreen, {
                       [event.target.name]: event.target.value,
@@ -87,7 +87,7 @@ class Form extends Component {
 
 
             {item.type === "checkbox" && (
-              <div style={{ marginTop: "20px" }}>
+              <div>
                 <br />
 
                 <FormControlLabel
@@ -96,10 +96,10 @@ class Form extends Component {
                       {...item}
                       color="primary"
                       onChange={(event) =>
-                       this.props.setScreenData(this.props.currentScreen, {
-                      [event.target.name]: event.target.checked,
-                    })
-                  }
+                        this.props.setScreenData(this.props.currentScreen, {
+                          [event.target.name]: event.target.checked,
+                        })
+                      }
                     />
                   }
                   label={item.label}
