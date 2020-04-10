@@ -23,7 +23,7 @@ class Form extends Component {
       >
         {formData[this.props.currentScreen].fields.map((item) => (
           <Fragment>
-            {item.type === "text" && (
+            {(item.type === "text" || item.type === "number") && (
               <div style={{ marginTop: "30px" }}>
                 <label>{item.label}</label>
                 <br />
